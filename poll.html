@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Poll</title>
+  <style>
+    body { font-family: Poppins, sans-serif; margin: 30px; }
+    .poll { max-width: 500px; padding: 20px; border: 1px solid #ccc; border-radius: 10px; }
+    button { margin-top: 10px; padding: 8px 15px; border: none; background: #007bff; color: white; border-radius: 5px; cursor: pointer; }
+    h3 { margin-top: 20px; }
+    #thankyou { font-size: 20px; color: green; font-weight: bold; margin-top: 20px; display: none; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="poll">
+    <form id="pollForm">
+      <!-- Question 1 -->
+      <h3>हाम्रो क्यान सिस्नु तपाईलाई कस्तो लाग्यो?</h3>
+      <input type="radio" name="vote1" value="मिठो"> मिठो<br>
+      <input type="radio" name="vote1" value="ठिकै"> ठिकै<br>
+      <input type="radio" name="vote1" value="नमिठो"> नमिठो<br><br>
+
+      <!-- Question 2 -->
+      <h3>हामीले क्यान सिस्नु फेरि उत्पादन गर्‍यौँ भने तपाईले उपभोग गर्नुहुन्छ?</h3>
+      <input type="radio" name="vote2" value="गर्छु"> गर्छु<br>
+      <input type="radio" name="vote2" value="खै, के गर्छु"> खै, के गर्छु<br>
+      <input type="radio" name="vote2" value="गर्दिनँ"> गर्दिनँ<br><br>
+
+      <button type="button" onclick="submitVote()">Submit</button>
+    </form>
+
+    <div id="thankyou">🙏 Thank You!</div>
+  </div>
+
+  <script>
+    function submitVote() {
+      let choice1 = document.querySelector('input[name="vote1"]:checked');
+      let choice2 = document.querySelector('input[name="vote2"]:checked');
+
+      if (!choice1 && !choice2) {
+        alert("कृपया कम्तिमा एउटा विकल्प चयन गर्नुहोस्!");
+        return;
+      }
+
+      // Form hide + thank you show
+      document.getElementById("pollForm").style.display = "none";
+      document.getElementById("thankyou").style.display = "block";
+    }
+  </script>
+</body>
+</html>
+
